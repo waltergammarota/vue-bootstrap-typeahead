@@ -84,7 +84,9 @@ export default {
     },
 
     matchedItems() {
-      if (this.query.length === 0 || this.query.length < this.minMatchingChars) {
+      if (this.query.length === 0 && this.minMatchingChars === 0) {
+        return this.data.slice(0, this.maxMatches)
+      } else if (this.query.length < this.minMatchingChars) {
         return []
       }
 
